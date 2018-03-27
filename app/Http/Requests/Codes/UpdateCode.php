@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Items;
+namespace App\Http\Requests\Codes;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Helpers\CustomFormRequest;
 
-class UpdateItem extends CustomFormRequest
+
+class UpdateCode extends CustomFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,12 +26,11 @@ class UpdateItem extends CustomFormRequest
     {
         return [
 
-            'name' => 'bail|required|max:100|unique_with:items,size,color,'.$this->get('id'),
+            'name' => 'bail|required|max:255|unique:codes,name,'.$this->get('id'),
 
-            'size' => 'bail|required|max:10',
+            'category' => 'bail|required|max:255',
 
-            'color' => 'bail|required|max:15',
-
+            'description' => 'bail|required',
 
         ];
     }

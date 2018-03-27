@@ -2,7 +2,8 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -13,6 +14,7 @@
     <script type="text/javascript" src="{{asset('jeasyui/jquery.easyui.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('jeasyui/jquery.edatagrid.js')}}"></script>
     <script type="text/javascript" src="{{asset('jeasyui/datagrid-filter.js')}}"></script>
+    <script type="text/javascript" src="{{asset('jeasyui/jeasyui-texteditor/texteditor.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/lodash.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('jeasyui/jeasyui.customized.js')}}"></script>
 
@@ -22,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('jeasyui/themes/icon.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('jeasyui/themes/color.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('jeasyui/demo/demo.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('jeasyui/jeasyui-texteditor/texteditor.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/dock.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/application.custom.css')}}">
 
@@ -67,7 +70,7 @@
        <ul>
 
              <li><span>Home</span><a href="#" onclick="switchDashboardMainTab('Home', '')"><img src="/img/dock/home.svg" alt="home" /></a></li>
-
+             <li><span>Codes</span><a href="#" onclick="switchDashboardMainTab('Codes', '/codes')"><img src="/img/dock/codes.svg" alt="Settings" /></a></li>
              <li><span>Manager Users</span><a href="#" onclick="switchDashboardMainTab('Manage Users', '/settings')"><img src="/img/dock/manage_users.svg" alt="Settings" /></a></li>
 
        </ul>

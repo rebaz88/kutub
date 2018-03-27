@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Imports;
+namespace App\Http\Requests\Codes;
 
 use App\Helpers\CustomFormRequest;
 
-class StoreImport extends CustomFormRequest
+class StoreCode extends CustomFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,11 @@ class StoreImport extends CustomFormRequest
     {
         return [
 
-            'invoice' => 'bail|required|max:100',
-            'date' => 'bail|required|date|max:100',
-            'type' => 'bail|required',
-            'port' => 'bail|required',
-            'container' => 'bail|required',
-            'vendor' => 'bail|required|max:100',
+            'name' => 'bail|required|max:255|unique:codes',
+
+            'category' => 'bail|required|max:255',
+
+            'description' => 'bail|required',
 
 
         ];

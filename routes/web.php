@@ -79,6 +79,17 @@ Route::get('/activities/list', 'UserManager\ActivityController@list');
 Route::get('/activities/list/model-activity-name', 'UserManager\ActivityController@listModelActivityNames');
 
 
+// User
+Route::get('/codes', 'CodeController@index');
+Route::get('/codes/list', 'CodeController@list');
+Route::get('/codes/list-categories', 'CodeController@listCategories');
+Route::get('/codes/insert', 'CodeController@showInsert');
+Route::post('/codes/insert', 'CodeController@insert');
+Route::get('/codes/update', 'CodeController@showUpdate');
+Route::post('/codes/update', 'CodeController@update');
+Route::post('/codes/destroy', 'CodeController@destroy');
+Route::post('/codes/destroy/media', 'CodeController@destroyMedia');
+
 
 
 
