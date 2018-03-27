@@ -44,14 +44,10 @@
         {{-- Center panel of dashboard --}}
         <div data-options="region:'center'" style="border-left:0;border-right:0;border-top:0;">
 
-            <div class="easyui-tabs" id="MainPanelTab" fit="true" showHeader="false"
-                data-options="border:false,showHeader:false, onSelect:loadContentToTab">
+            <div class="easyui-tabs" id="DashboardMainTab"
+                data-options="fit:true,border:false,showHeader:false">
 
                 @yield('content')
-
-                @for ($i=1; $i < 12 ; $i++)
-                    <div>{{$i}}</div>
-                @endfor
 
             </div>
 
@@ -69,10 +65,10 @@
     <div id="dock-container">
      <div id="dock">
        <ul>
-             <li><span>Home</span><a href="#" onclick="switchMainPanelTab(0)"><img src="/img/dock/home.svg" alt="home" /></a></li>
 
-             <li><span>Manager Users</span><a href="#" onclick="switchMainPanelTab(1)"><img src="/img/dock/manage_users.svg" alt="Settings" /></a></li>
+             <li><span>Home</span><a href="#" onclick="switchDashboardMainTab('Home', '')"><img src="/img/dock/home.svg" alt="home" /></a></li>
 
+             <li><span>Manager Users</span><a href="#" onclick="switchDashboardMainTab('Manage Users', '/settings')"><img src="/img/dock/manage_users.svg" alt="Settings" /></a></li>
 
        </ul>
      </div>
@@ -87,29 +83,28 @@
             '/settings',
         ]
 
-        function switchMainPanelTab(index) {
-            $('#MainPanelTab').tabs('select', index);
-        }
+        function switchDashboardMainTab(title, url) {
 
-        function loadContentToTab(title,index) {
-            if (loadContentsURL) {
+            var tabExists = $('#DashboardMainTab').tabs('exists', title);
 
-                if(loadContentsURL[index] != ''){
+            if(tabExists){
 
-                    var tabs = $('#MainPanelTab').tabs('tabs');
+                $('#DashboardMainTab').tabs('select', title);
 
-                    $('#MainPanelTab').tabs('update', {
-                    tab: tabs[index],
-                    options: {
-                        href: loadContentsURL[index]
-                    }
+            } else {
+
+                // add a new tab panel
+                $('#DashboardMainTab').tabs('add',{
+                    title: title,
+                    href: url,
                 });
 
-                    loadContentsURL[index] = '';
-                }
             }
 
+            return
+
         }
+
 
         // set header for ajax calls
         $(function(){
