@@ -51,7 +51,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => fdf_enum_values(fdf_document, function)('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
@@ -62,13 +62,6 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
-        ],
-
-        'samanco' => [
-            'driver' => 'local',
-            'root' => storage_path('app/samanco_docs'),
-            'url' => env('APP_URL') . '/samanco_docs',
-            'visibility' => 'public',
         ],
 
         'media' => [

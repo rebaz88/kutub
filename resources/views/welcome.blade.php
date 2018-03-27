@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Samanco
+                    {{ env('SITE_TITLE') }}
                 </div>
             </div>
         </div>
