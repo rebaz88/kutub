@@ -25,7 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        if(Auth::user()->hasRole('Admin'))
+            return view('home.index');
+        else
+            return view('welcome');
     }
 
     public function showChgpwdForm()
