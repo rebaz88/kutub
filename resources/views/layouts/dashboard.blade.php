@@ -70,15 +70,8 @@
      <div id="dock">
        <ul>
              <li><span>Home</span><a href="#" onclick="switchMainPanelTab(0)"><img src="/img/dock/home.svg" alt="home" /></a></li>
-             <li><span>Items</span><a href="#" onclick="switchMainPanelTab(1)"><img src="/img/dock/item.png" alt="Items" /></a></li>
-             <li><span>Import</span><a href="#" onclick="switchMainPanelTab(2)"><img src="/img/dock/import.png" alt="Import" /></a></li>
-             <li><span>Export</span><a href="#" onclick="switchMainPanelTab(3)"><img src="/img/dock/export.png" alt="Export Items" /></a></li>
-             <li><span>Return</span><a href="#" onclick="switchMainPanelTab(4)"><img src="/img/dock/return.png" alt="Return Items" /></a></li>
-             <li><span>Expenditures</span><a href="#" onclick="switchMainPanelTab(5)"><img src="/img/dock/expenditure.png" alt="Expenditures" /></a></li>
-             <li><span>Qasa</span><a href="#" onclick="switchMainPanelTab(6)"><img src="/img/dock/qasa.png" alt="Qasa" /></a></li>
-             <li><span>Reports</span><a href="#" onclick="switchMainPanelTab(7)"><img src="/img/dock/report.png" alt="Reports" /></a></li>
 
-             <li><span>Settings</span><a href="#" onclick="switchMainPanelTab(8)"><img src="/img/dock/settings.svg" alt="Settings" /></a></li>
+             <li><span>Manager Users</span><a href="#" onclick="switchMainPanelTab(1)"><img src="/img/dock/manage_users.svg" alt="Settings" /></a></li>
 
 
        </ul>
@@ -91,13 +84,6 @@
 
         var loadContentsURL = [
             '',
-            '/items',
-            '/imports',
-            '/exports',
-            '/returns',
-            '/expenditures',
-            '/qasa',
-            '/reports',
             '/settings',
         ]
 

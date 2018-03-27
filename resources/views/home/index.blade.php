@@ -32,7 +32,7 @@
 
             <div data-options="region:'center',border:false" id="home-center-panel">
 
-                <h1 style="font-size:80px;color:mediumseagreen;text-align: center;">Saman Company</h1>
+                <h1 style="font-size:80px;color:#9e91b9;text-align: center;">{{ env('SITE_TITLE') }}</h1>
             </div>
 
 

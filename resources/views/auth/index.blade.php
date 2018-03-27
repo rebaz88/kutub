@@ -5,7 +5,6 @@
           <th data-options="field:'name',width:120">Name</th>
           <th data-options="field:'email',width:120">Email</th>
           <th data-options="field:'role',width:120">Role</th>
-          <th data-options="field:'agent',width:120">Agent</th>
           <th data-options="field:'status',width:120" formatter="formatUserStatus">Status</th>
       </tr>
   </thead>
@@ -56,31 +55,9 @@
               hasDownArrow: true,
               panelHeight:'auto',
               prompt: 'Select a role',
-              required:true,
-              onSelect: function(record) {
-			    if(record.name == 'Agent')
-			    	showAgentField(true);
-			 	else
-			  		showAgentField(false);
-			  }
+              required:true
               ">
       </div>
-
-      <div class="fitem" id="agent-field-holder" style="display: none;">
-  		<label>Agent:</label>
-  		<input class="easyui-combobox" id="agent" name="agent" style="width:200px;" data-options="
-              url: 'agents/list',
-              method: 'get',
-              valueField: 'name',
-              textField: 'name',
-              limitToList: true,
-              hasDownArrow: true,
-              panelHeight:'auto',
-              prompt: 'Select an agent',
-              required:true,
-              ">
-  	  </div>
-
 
 
     </form>
@@ -95,7 +72,7 @@
 <script>
 
 
-  var usersDataGrid = $('#UsersDatagrid').datagrid({
+  $('#UsersDatagrid').datagrid({
     title:'Users',
     fit:true,
     toolbar:'#UsersDatagridToolbar',
@@ -109,6 +86,8 @@
     url:'users/list'
   })
 
+  $('#UsersDatagrid').datagrid('enableFilter');
+
   var url;
 
   function addUser() {
@@ -116,7 +95,6 @@
       $('#UsersDialog').dialog('open');
       $('#UsersForm').form('clear');
       url = 'users/create';
-      showAgentField(false);
   }
 
   function editUser() {
@@ -133,8 +111,6 @@
 
       $('#UsersForm').form('clear');
       $('#UsersForm').form('load', row);
-
-      (row.role == 'Agent') ? showAgentField(true) : showAgentField(false);
 
       $('#UsersDialog').dialog('open');
 
@@ -167,8 +143,6 @@
                 $('#UsersForm').form('clear');
                 $.messager.show({ title: 'Success', msg: 'Operation performed successfully!'});
 
-                //hide specify other textbox
-          		showAgentField(false);
 
             }
         }
@@ -236,16 +210,6 @@
 	    	$.messager.show({title:'Error', msg:'Please select a user'});
 	    }
 
-	}
-
-	function showAgentField(show) {
-	  if(show) {
-	    $('#UsersForm #agent-field-holder').show();
-	    $('#UsersForm #specify').textbox({required: true});
-	  } else {
-	    $('#UsersForm #agent-field-holder').hide();
-	    $('#UsersForm #specify').textbox({required: false});
-	  }
 	}
 
 </script>

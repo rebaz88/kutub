@@ -29,7 +29,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $appends = ['role', 'agent'];
+    protected $appends = ['role'];
 
     // The name to be used by activity logger when logging using activity on this model
     const MODEL_ACTIVITY_NAME = 'Users';
@@ -38,21 +38,6 @@ class User extends Authenticatable
     {
         $roles = $this->getRoleNames();
         return ($roles->isNotEmpty()) ? $roles->first() : '------';
-    }
-
-    public function getAgentAttribute()
-    {
-        $agent = $this->agents()->get();
-
-        return ($agent->isNotEmpty()) ? $agent->first()->name : '------';
-    }
-
-    /**
-     * The users that work for the agency
-     */
-    public function agents()
-    {
-        return $this->belongsToMany('App\Agent');
     }
 
 

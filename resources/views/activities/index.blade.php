@@ -3,7 +3,6 @@
 	<thead>
 		<tr>
 			<th field="users.name" width="100">Username</th>
-			<th field="agents.name" width="100" data-options="align:'center'" formatter="formatActivityAgency">Agent</th>
 			<th field="properties" width="100" formatter="formatModelActivityName">Target</th>
 			<th field="subject_id" width="100">Target ID</th>
 			<th field="description" width="100">Description</th>

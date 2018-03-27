@@ -1,16 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\UserManager;
+
+use App\Http\Controllers\Controller;
 
 use App\User;
-use App\Agent;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 use App\Http\Requests\Users\StoreUser;
 use App\Http\Requests\Users\UpdateUser;
+
+use App\Helpers\EasyuiPagination;
 
 class UserController extends Controller
 {
@@ -48,9 +50,20 @@ class UserController extends Controller
     	return view('auth.index');
     }
 
-    public function list()
+    public function list(Request $request)
     {
-    	return User::all();
+      $query = User::query();
+
+      if($request->has('filterRules')) {
+
+        $filterRules = json_decode($request->filterRules);
+
+        foreach ($filterRules as $filterRule) {
+          $query->where($filterRule->field, 'like', '%'. $filterRule->value .'%');
+        }
+      }
+
+    	return EasyuiPagination::paginageData($request, $query);
     }
 
 
@@ -71,11 +84,6 @@ class UserController extends Controller
 
         $user->assignRole($request->role);
 
-        if($request->has('agent') && $request->role == 'Agent') {
-        	$agent = Agent::where('name', $request->agent)->firstOrFail();
-        	$user->agents()->attach($agent->id);
-        }
-
         activity()->causedBy(\Auth::user())
                   ->performedOn($user)
                   ->withProperties(['model_activity_name' => $user::MODEL_ACTIVITY_NAME])
@@ -94,13 +102,6 @@ class UserController extends Controller
     	$user->save();
 
     	$user->syncRoles([$request->role]);
-
-    	if($request->has('agent') && $request->role == 'Agent') {
-        	$agent = Agent::where('name', $request->agent)->firstOrFail();
-        	$user->agents()->sync($agent->id);
-        } else {
-            $user->agents()->detach();
-        }
 
         activity()->causedBy(\Auth::user())
                   ->performedOn($user)
@@ -138,7 +139,8 @@ class UserController extends Controller
         $userStatus = ($user->status == 1) ? 'enabled' : 'disabled';
         activity()->causedBy(\Auth::user())
                   ->performedOn($user)
-                  ->withProperties(['model_activity_name' => $user::MODEL_ACTIVITY_NAME])
+                  // ->withProperties(['model_activity_name' => $user::MODEL_ACTIVITY_NAME])
+                  ->withProperties(['model_activity_name' => 'Test'])
                   ->log('Changed the user status to ' . $userStatus);
 
     	return ezReturnSuccessMessage('User staus changed successfully!');

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\UserManager;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
 use App\User;
@@ -19,9 +20,7 @@ class ActivityController extends Controller
     {
     	$query = \DB::table('activity_log')
     				->join('users', 'activity_log.causer_id', 'users.id')
-    				->leftJoin('agent_user', 'users.id', 'agent_user.user_id')
-    				->leftJoin('agents', 'agents.id', 'agent_user.agent_id')
-    				->select('activity_log.*', 'users.name as users.name', 'agents.name as agents.name')
+    				->select('activity_log.*', 'users.name as users.name')
     				->orderBy('activity_log.created_at', 'desc');
 
     	if($request->has('filterRules')) {
