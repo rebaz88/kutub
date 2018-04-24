@@ -82,6 +82,8 @@
 
         onSubmit: function(param) {
           param._token = window.CSRF_TOKEN;
+          param.description = $('#summernote').summernote('code');
+
 
           var formValidated = $(this).form('validate');
 
@@ -140,6 +142,25 @@
                   	$.messager.show({ title: 'Error', msg: result.msg});
                   }
               }, 'json');
+          }
+      });
+  }
+
+  function saveEditorImage(file) {
+      // return;
+      data = new FormData();
+      data.append("attachment[]", file);
+      $.ajax({
+          data: data,
+          type: "POST",
+          url: "/codes/save-editor-image",
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function(url) {
+              $('#summernote').summernote('insertImage', url, function($image) {
+                $image.css('width', '100%');
+              });
           }
       });
   }

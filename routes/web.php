@@ -79,7 +79,7 @@ Route::get('/activities/list', 'UserManager\ActivityController@list');
 Route::get('/activities/list/model-activity-name', 'UserManager\ActivityController@listModelActivityNames');
 
 
-// User
+// Codes
 Route::get('/codes', 'CodeController@index');
 Route::get('/codes/list', 'CodeController@list');
 Route::get('/codes/list-categories', 'CodeController@listCategories');
@@ -89,6 +89,19 @@ Route::get('/codes/update', 'CodeController@showUpdate');
 Route::post('/codes/update', 'CodeController@update');
 Route::post('/codes/destroy', 'CodeController@destroy');
 Route::post('/codes/destroy/media', 'CodeController@destroyMedia');
+Route::post('/codes/save-editor-image','CodeController@saveEditorImage');
+
+// Codes
+Route::get('/codes', 'CodeController@index');
+Route::get('/codes/{code}/search', 'CodeController@list');
+Route::get('/codes/list-codes', 'CodeController@listCategories');
+
+// Codes
+Route::get('/search', 'CodeSearchController@index');
+Route::get('/search/{code}', 'CodeSearchController@list');
+Route::get('/search/list-codes', 'CodeSearchController@listCategories');
+
+
 
 
 

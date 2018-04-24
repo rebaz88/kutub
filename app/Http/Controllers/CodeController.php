@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Code;
+use App\CodeImage;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\Codes\StoreCode;
@@ -128,14 +129,12 @@ class CodeController extends Controller
 
     }
 
-    private function saveAttachment(Request $request, Code $code)
+    private function saveAttachment(Request $request, $model)
     {
         if ($request->hasFile('attachment')) {
 
           foreach ($request->attachment as $attachment) {
-
-            $code->addMedia($attachment)->withResponsiveImages()->toMediaCollection();
-
+            $model->addMedia($attachment)->withResponsiveImages()->toMediaCollection();
           }
 
         }
@@ -147,6 +146,13 @@ class CodeController extends Controller
                 ->performedOn($code)
                 ->withProperties(['model_activity_name' => $code::MODEL_ACTIVITY_NAME])
                 ->log($operation);
+    }
+
+    public function saveEditorImage(Request $request)
+    {
+      $codeImage = CodeImage::create([]);
+      $this->saveAttachment($request, $codeImage);
+      return $codeImage->getFirstMediaUrl();
     }
 
 

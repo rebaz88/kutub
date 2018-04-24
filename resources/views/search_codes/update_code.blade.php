@@ -59,9 +59,7 @@
         <div data-options="region:'center', border:false" style="padding:10px;">
 
 
-          <div class="fitem">
-              <div id="summernote"></div>
-          </div>
+          <div id="description" fit="true"></div>
 
         </div>
 
@@ -80,22 +78,7 @@
 <script>
 
   $(function(){
-
-      var description = {!! json_encode($code->description) !!};
-
-      $('#summernote').summernote({
-          // dialogsInBody: true,
-          height: 400,
-          width: '100%',
-          disableResizeImage: true,
-
-          callbacks: {
-              onImageUpload: function(image) {
-                  saveEditorImage(image[0]);
-              }
-          }
-      }).summernote('code',description);
-
+      $('#description').texteditor({name: 'description'}).texteditor('setValue', '{!! $code->description !!}');
       $('#CodeForm').form('load', {
         category: '{!! $code->category !!}',
       });

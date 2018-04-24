@@ -45,12 +45,10 @@
 
         </div>
 
-        <div data-options="region:'center', border:false" style="padding:0px;">
+        <div data-options="region:'center', border:false" style="padding:10px;">
 
-          <div class="fitem">
-              <div id="summernote"></div>
-          </div>
-          {{-- <div id="description" fit="true"></div> --}}
+
+          <div id="description" fit="true"></div>
 
         </div>
 
@@ -69,18 +67,8 @@
 <script>
 
   $(function(){
-
-    $('#summernote').summernote({
-          // dialogsInBody: true,
-          height: 400,
-          width: '100%',
-          disableResizeImage: true,
-
-          callbacks: {
-              onImageUpload: function(image) {
-                  saveEditorImage(image[0]);
-              }
-          }
+      $('#description').texteditor({
+          name: 'description',
       });
   });
 

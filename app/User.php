@@ -41,4 +41,10 @@ class User extends Authenticatable
     }
 
 
+    public function codeSearches()
+    {
+        return \DB::table('search_codes')->where('user_id', $this->id);
+    }
+
+
 }

@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <img src="/img/dock/settings.svg" alt="mechanic" style="opacity: 0.1">
                 </div>
             </div>
         </div>
