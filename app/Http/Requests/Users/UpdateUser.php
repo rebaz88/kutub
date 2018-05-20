@@ -30,7 +30,7 @@ class UpdateUser extends CustomFormRequest
 
             'email' => 'bail|required|email|unique:users,email,'.$this->get('id'),
 
-            'role' => 'bail|required',
+            // 'role' => 'bail|required',
 
             'agent' => 'bail|required_if:role,==,Agent',
 

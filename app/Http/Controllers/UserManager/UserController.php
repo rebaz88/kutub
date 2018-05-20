@@ -82,14 +82,14 @@ class UserController extends Controller
             'password' => Hash::make($request->email),
         ]);
 
-        $user->assignRole($request->role);
+        // $user->assignRole($request->role);
 
         activity()->causedBy(\Auth::user())
                   ->performedOn($user)
                   ->withProperties(['model_activity_name' => $user::MODEL_ACTIVITY_NAME])
                   ->log('create');
 
-        return ezReturnSuccessMessage('User created successfully!');
+        return ezReturnSuccessMessage('كاره‌كه به‌ سه‌ركه‌وتووی ئه‌نجام درا!');
     }
 
     public function update(UpdateUser $request)
@@ -101,14 +101,14 @@ class UserController extends Controller
 
     	$user->save();
 
-    	$user->syncRoles([$request->role]);
+    	// $user->syncRoles([$request->role]);
 
         activity()->causedBy(\Auth::user())
                   ->performedOn($user)
                   ->withProperties(['model_activity_name' => $user::MODEL_ACTIVITY_NAME])
                   ->log('edit');
 
-        return ezReturnSuccessMessage('User created successfully!');
+        return ezReturnSuccessMessage('كاره‌كه به‌ سه‌ركه‌وتووی ئه‌نجام درا!');
     }
 
     public function destroy(Request $request)
@@ -123,7 +123,7 @@ class UserController extends Controller
                   ->withProperties(['model_activity_name' => $user::MODEL_ACTIVITY_NAME])
                   ->log('delete');
 
-    	return ezReturnSuccessMessage('User removed successfully!');
+    	return ezReturnSuccessMessage('كاره‌كه به‌ سه‌ركه‌وتووی ئه‌نجام درا!');
 
     }
 
@@ -143,7 +143,7 @@ class UserController extends Controller
                   ->withProperties(['model_activity_name' => 'Test'])
                   ->log('Changed the user status to ' . $userStatus);
 
-    	return ezReturnSuccessMessage('User staus changed successfully!');
+    	return ezReturnSuccessMessage('كاره‌كه به‌ سه‌ركه‌وتووی ئه‌نجام درا!');
 
     }
 

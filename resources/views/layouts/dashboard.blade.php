@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="{{asset('favicon.png')}}"/>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -11,13 +12,13 @@
 
     <!-- Scripts -->
     <!-- include libraries(jQuery, bootstrap) -->
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}">
+    <script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/bootstrap.js')}}"></script>
 
     <!-- include summernote css/js -->
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/summernote.css')}}">
+    <script type="text/javascript" src="{{asset('js/summernote.js')}}"></script>
 
     {{-- <script type="text/javascript" src="{{asset('jeasyui/jquery.min.js')}}"></script> --}}
     <script type="text/javascript" src="{{asset('jeasyui/jquery.easyui.min.js')}}"></script>
@@ -79,8 +80,9 @@
        <ul>
 
              <li><span>Home</span><a href="#" onclick="switchDashboardMainTab('Home', '')"><img src="/img/dock/home.svg" alt="home" /></a></li>
-             <li><span>Codes</span><a href="#" onclick="switchDashboardMainTab('Codes', '/codes')"><img src="/img/dock/codes.svg" alt="Settings" /></a></li>
-             <li><span>Manager Users</span><a href="#" onclick="switchDashboardMainTab('Manage Users', '/settings')"><img src="/img/dock/manage_users.svg" alt="Settings" /></a></li>
+             <li><span>Books</span><a href="#" onclick="switchDashboardMainTab('Books', '/books')"><img src="/img/dock/books.svg" alt="Books" /></a></li>
+             <li><span>Videos</span><a href="#" onclick="switchDashboardMainTab('Videos', '/videos')"><img src="/img/dock/videos.svg" alt="Videos" /></a></li>
+             <li><span>Manager Users</span><a href="#" onclick="switchDashboardMainTab('Manage Users', '/users')"><img src="/img/dock/manage_users.svg" alt="Settings" /></a></li>
 
        </ul>
      </div>

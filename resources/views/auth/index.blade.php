@@ -4,7 +4,6 @@
       <tr>
           <th data-options="field:'name',width:120">Name</th>
           <th data-options="field:'email',width:120">Email</th>
-          <th data-options="field:'role',width:120">Role</th>
           <th data-options="field:'status',width:120" formatter="formatUserStatus">Status</th>
       </tr>
   </thead>
@@ -13,7 +12,7 @@
 <div id="UsersDatagridToolbar">
 
   <p class="hint hint-p icon-tip-p">
-    The default control panel password for new created user is his/her email
+    The default password is user's email
   </p>
   <div style="padding:5px;">
 
@@ -42,21 +41,6 @@
       <div class="fitem">
           <label>Email:</label>
           <input name="email" class="easyui-textbox" required="true" validType="email" style="width:200px;">
-      </div>
-
-      <div class="fitem">
-          <label>Role:</label>
-          <input class="easyui-combobox" id="role" name="role" style="width:200px;" data-options="
-              url: 'roles/list',
-              method: 'get',
-              valueField: 'name',
-              textField: 'name',
-              limitToList: true,
-              hasDownArrow: true,
-              panelHeight:'auto',
-              prompt: 'Select a role',
-              required:true
-              ">
       </div>
 
 
@@ -213,5 +197,3 @@
 	}
 
 </script>
-
-

@@ -4,9 +4,9 @@
 
         <div class="easyui-layout" fit="true">
 
-            <div data-options="region:'north'" style="height:30%;padding:20px;border-top:0;border-left:0;border-bottom: 0;">
+            <div data-options="region:'west',border:false" style="width:200px;padding:20px;">
 
-                <div style="width:200px;">
+                <div>
 
                     <label class="username-label">
                              {{ucfirst(Auth::user()->name)}}
@@ -31,8 +31,7 @@
             </div>
 
             <div data-options="region:'center',border:false" id="home-center-panel">
-
-                <h1 style="font-size:80px;color:#9e91b9;text-align: center;">{{ env('SITE_TITLE') }}</h1>
+                <h1 id="company-title">{{ env('SITE_TITLE') }}</h1>
             </div>
 
 
@@ -43,6 +42,18 @@
 @endsection
 
 <style>
+    #company-title{
+      font-size:80px;
+      color:#9e91b9;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -100px;
+      margin-left: -250px;
+      width: 100px;
+      height: 100px;
+    }
     .username-label {
         font-weight:normal;
         padding: 5px;

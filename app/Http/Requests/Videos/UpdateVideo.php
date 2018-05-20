@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Users;
+namespace App\Http\Requests\Videos;
 
 use App\Helpers\CustomFormRequest;
 
-class StoreUser extends CustomFormRequest
+
+class UpdateVideo extends CustomFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,13 +26,13 @@ class StoreUser extends CustomFormRequest
     {
         return [
 
-            'name' => 'bail|required|max:255|unique:users',
+            'title' => 'bail|required|max:255|unique:videos,title,'.$this->get('id'),
 
-            'email' => 'bail|required|email|unique:users',
+            'category' => 'bail|required|max:255',
 
-            // 'role' => 'bail|required',
+            'description' => 'bail|required',
 
-            'agent' => 'bail|required_if:role,==,Agent',
+            'video_file[]' => 'file'
 
         ];
     }

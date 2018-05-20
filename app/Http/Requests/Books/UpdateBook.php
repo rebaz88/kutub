@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Codes;
+namespace App\Http\Requests\Books;
 
 use App\Helpers\CustomFormRequest;
 
-class StoreCode extends CustomFormRequest
+
+class UpdateBook extends CustomFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +26,15 @@ class StoreCode extends CustomFormRequest
     {
         return [
 
-            'name' => 'bail|required|max:255|unique:codes',
+            'title' => 'bail|required|max:255|unique:books,title,'.$this->get('id'),
 
             'category' => 'bail|required|max:255',
 
             'description' => 'bail|required',
 
+            'book_image[]' => 'bail|image',
+
+            'book_file[]' => 'mimes:pdf'
 
         ];
     }

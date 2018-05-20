@@ -16,6 +16,11 @@ Route::get('/', function () {
     // return redirect('login');
 });
 
+Route::get('/info', function () {
+    return [phpinfo()];
+    // return redirect('login');
+});
+
 // Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -79,30 +84,39 @@ Route::get('/activities/list', 'UserManager\ActivityController@list');
 Route::get('/activities/list/model-activity-name', 'UserManager\ActivityController@listModelActivityNames');
 
 
-// Codes
-Route::get('/codes', 'CodeController@index');
-Route::get('/codes/list', 'CodeController@list');
-Route::get('/codes/list-categories', 'CodeController@listCategories');
-Route::get('/codes/insert', 'CodeController@showInsert');
-Route::post('/codes/insert', 'CodeController@insert');
-Route::get('/codes/update', 'CodeController@showUpdate');
-Route::post('/codes/update', 'CodeController@update');
-Route::post('/codes/destroy', 'CodeController@destroy');
-Route::post('/codes/destroy/media', 'CodeController@destroyMedia');
-Route::post('/codes/save-editor-image','CodeController@saveEditorImage');
-
-// Codes
-Route::get('/codes', 'CodeController@index');
-Route::get('/codes/{code}/search', 'CodeController@list');
-Route::get('/codes/list-codes', 'CodeController@listCategories');
-
-// Codes
-Route::get('/search', 'CodeSearchController@index');
-Route::get('/search/{code}', 'CodeSearchController@list');
-Route::get('/search/list-codes', 'CodeSearchController@listCategories');
+// Books
+Route::get('/books', 'BookController@index');
+Route::get('/books/list', 'BookController@list');
+Route::get('/books/list-categories', 'BookController@listCategories');
+Route::get('/books/list-authors', 'BookController@listAuthors');
+Route::get('/books/insert', 'BookController@showInsert');
+Route::post('/books/insert', 'BookController@insert');
+Route::get('/books/update', 'BookController@showUpdate');
+Route::post('/books/update', 'BookController@update');
+Route::post('/books/destroy', 'BookController@destroy');
+Route::post('/books/destroy/media', 'BookController@destroyMedia');
 
 
+// Books
+Route::get('/videos', 'VideoController@index');
+Route::get('/videos/list', 'VideoController@list');
+Route::get('/videos/list-categories', 'VideoController@listCategories');
+Route::get('/videos/insert', 'VideoController@showInsert');
+Route::post('/videos/insert', 'VideoController@insert');
+Route::get('/videos/update', 'VideoController@showUpdate');
+Route::post('/videos/update', 'VideoController@update');
+Route::post('/videos/destroy', 'VideoController@destroy');
+Route::post('/videos/destroy/media', 'VideoController@destroyMedia');
 
+//RandomFile
+Route::post('/files/save-random-file','RandomFileController@saveRandomFile');
 
+// // Books
+// Route::get('/books', 'BookController@index');
+// Route::get('/books/{book}/search', 'BookController@list');
+// Route::get('/books/list-books', 'BookController@listCategories');
 
-
+// Books
+Route::get('/search', 'BookSearchController@index');
+Route::get('/search/{book}', 'BookSearchController@list');
+Route::get('/search/list-books', 'BookSearchController@listCategories');
